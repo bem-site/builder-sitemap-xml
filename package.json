@@ -1,0 +1,46 @@
+{
+  "name": "bs-builder-sitemap-xml",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bem-site/builder-sitemap-xml.git"
+  },
+  "author": "Andrey Kuznetsov <andrey.kuznetsov48@yandex.ua> (http://github.com/tormozz48)",
+  "maintainers": [
+    "Andrey Kuznetsov <andrey.kuznetsov48@yandex.ua> (http://github.com/tormozz48)"
+  ],
+  "contributors": [
+    "Andrey Kuznetsov <andrey.kuznetsov48@yandex.ua> (http://github.com/tormozz48)",
+    "Nikolay Ilchenko <tavria@yandex-team.ru> (http://github.com/tavriaforever)",
+    "Gela Konstantinova <gela-d@yandex-team.ru> (http://github.com/gela-d)"
+  ],
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "dependencies": {
+    "babel-runtime": "^5.2.x",
+    "bem-site-logger": "^0.0.x",
+    "js2xmlparser": "^0.1.9",
+    "lodash": "^3.x"
+  },
+  "devDependencies": {
+    "babel": "^5.2.x",
+    "bs-builder-core": "^0.x",
+    "istanbul": "^0.3.x",
+    "jscs": "^1.11.x",
+    "jshint": "~2.7.x",
+    "mocha": "~2.2.x",
+    "mocha-lcov-reporter": "0.0.x",
+    "mock-fs": "^2.7.0",
+    "should": "~6.x"
+  },
+  "scripts": {
+    "start": "npm run compile && node launcher.js",
+    "compile": "babel src --optional runtime --out-dir lib",
+    "mocha": "npm run compile && NODE_ENV=testing mocha --reporter spec",
+    "codestyle": "node_modules/.bin/jshint . && node_modules/.bin/jscs -c .jscs.js .",
+    "test": "npm run compile && NODE_ENV=testing ./node_modules/.bin/istanbul cover _mocha"
+  },
+  "readmeFilename": "README.md",
+  "license": "MPL-2.0"
+}
