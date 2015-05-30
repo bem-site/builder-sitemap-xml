@@ -1,29 +1,24 @@
-# builder-core
-Core data builder for bem-site
+# builder-sitemap-xml
+Plugin for bs-builder system which creates sitemap.xml file
 
-[![Coveralls branch](https://img.shields.io/coveralls/bem-site/builder-core/master.svg)](https://coveralls.io/r/bem-site/builder-core?branch=master)
-[![Travis](https://img.shields.io/travis/bem-site/builder-core.svg)](https://travis-ci.org/bem-site/builder-core)
-[![David](https://img.shields.io/david/bem-site/builder-core.svg)](https://david-dm.org/bem-site/builder-core)
-[![David](https://img.shields.io/david/dev/bem-site/builder-core.svg)](https://david-dm.org/bem-site/builder-core#info=devDependencies)
+[![Coveralls branch](https://img.shields.io/coveralls/bem-site/builder-sitemap-xml/master.svg)](https://coveralls.io/r/bem-site/builder-sitemap-xml?branch=master)
+[![Travis](https://img.shields.io/travis/bem-site/builder-sitemap-xml.svg)](https://travis-ci.org/bem-site/builder-sitemap-xml)
+[![David](https://img.shields.io/david/bem-site/builder-sitemap-xml.svg)](https://david-dm.org/bem-site/builder-sitemap-xml)
+[![David](https://img.shields.io/david/dev/bem-site/builder-sitemap-xml.svg)](https://david-dm.org/bem-site/builder-sitemap-xml#info=devDependencies)
 
-Основной модуль сборки данных для bem сайтов.
+Плагин для [bs-builder](https://www.npmjs.com/package/bs-builder-core).
 
 ## Установка
 
 Пакет устанавливается как обычная npm зависимость
 ```
-$ npm install --save bs-builder-core
+$ npm install --save bs-builder-sitemap-xml
 ```
 
-## Конфигурация
+## Пример использования
 
 
 ## Тестирование
-
-Запуск тестов:
-```
-npm run mocha
-```
 
 Запуск тестов с вычислением покрытия кода тестами с помощью инструмента [istanbul](https://www.npmjs.com/package/istanbul):
 ```

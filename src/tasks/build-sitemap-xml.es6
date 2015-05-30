@@ -1,18 +1,27 @@
-var fs = require('fs'),
-    path = require('path'),
-    _ = require('lodash'),
-    js2xml = require('js2xmlparser');
+import fs from 'fs';
+import path from 'path';
+import _ from 'lodash';
+import js2xml from 'js2xmlparser';
+import builderCore from 'bs-builder-core';
 
-import Base from 'bs-builder-core/tasks/base';
+export default class BuildSitemapXML extends builderCore.tasks.Base {
 
-const META = {
-    module: _.pick(module, 'filename'),
-    name: 'build sitemap xml'
-};
+    static getLoggerName() {
+        return module;
+    }
 
-export default class BuildSitemapXML extends Base {
-    constructor(baseConfig, taskConfig) {
-        super(baseConfig, taskConfig, META);
+    static getName() {
+        return 'build sitemap xml';
+    }
+
+    /**
+     * Returns object with default search params
+     * @returns {{changefreq: string, priority: number}}
+     * @private
+     */
+    static _getDefaultSearchParams() {
+        // параметры поисковой индексации по умолчанию
+        return { changefreq: 'weekly', priority: 0.5 };
     }
 
     /**
@@ -46,23 +55,13 @@ export default class BuildSitemapXML extends Base {
     }
 
     /**
-     * Returns object with default search params
-     * @returns {{changefreq: string, priority: number}}
-     * @private
-     */
-    _getDefaultSearchParams() {
-        // параметры поисковой индексации по умолчанию
-        return { changefreq: 'weekly', priority: 0.5 };
-    }
-
-    /**
      * Returns path where sitemap.xml file should be placed in
      * @returns {string|*}
      * @private
      */
     _getSiteMapXmlFilePath() {
         // путь по которому будет сохранен файл sitemap.xml
-        return path.join(this.getBaseConfig().getDestinationDirPath(), 'sitemap.xml');
+        return path.join(this.getBaseConfig().getDataFolder(), 'sitemap.xml');
     }
 
     /**
@@ -86,8 +85,8 @@ export default class BuildSitemapXML extends Base {
         * где: host[lang] + url - полный адрес страницы включая протокол, хост и.т.д.
         */
         return model.getPages().reduce((siteMap, page) => {
-            var urls = [page.url].concat(page.oldUrls),
-                search = page.search || this._getDefaultSearchParams();
+            var urls = [page.url].concat(page.oldUrls || []),
+                search = page.search || this.constructor._getDefaultSearchParams();
 
             languages.forEach((lang) => {
                 if (page[lang] && page[lang].published) {
