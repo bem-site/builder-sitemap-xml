@@ -1,11 +1,16 @@
 {
   "name": "bs-builder-sitemap-xml",
   "version": "0.0.1",
+  "description": "Plugin for bs-builder system which creates sitemap.xml file",
   "repository": {
     "type": "git",
     "url": "git://github.com/bem-site/builder-sitemap-xml.git"
   },
-  "author": "Andrey Kuznetsov <andrey.kuznetsov48@yandex.ua> (http://github.com/tormozz48)",
+  "author": {
+    "name": "Andrey Kuznetsov",
+    "email": "andrey.kuznetsov48@yandex.ru",
+    "url": "http://github.com/tormozz48"
+  },
   "maintainers": [
     "Andrey Kuznetsov <andrey.kuznetsov48@yandex.ua> (http://github.com/tormozz48)"
   ],
@@ -14,6 +19,8 @@
     "Nikolay Ilchenko <tavria@yandex-team.ru> (http://github.com/tavriaforever)",
     "Gela Konstantinova <gela-d@yandex-team.ru> (http://github.com/gela-d)"
   ],
+  "keywords": ["sitemap", "sitemap.xml", "bs-builder-core", "plugin"],
+  "main": "index.js",
   "engines": {
     "node": ">= 0.10.0"
   },
