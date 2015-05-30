@@ -6,7 +6,9 @@ Plugin for bs-builder system which creates sitemap.xml file
 [![David](https://img.shields.io/david/bem-site/builder-sitemap-xml.svg)](https://david-dm.org/bem-site/builder-sitemap-xml)
 [![David](https://img.shields.io/david/dev/bem-site/builder-sitemap-xml.svg)](https://david-dm.org/bem-site/builder-sitemap-xml#info=devDependencies)
 
-Плагин для [bs-builder](https://www.npmjs.com/package/bs-builder-core).
+Плагин для [bs-builder](https://www.npmjs.com/package/bs-builder-core) предназначенный для генерации файла sitemap.xml.
+
+![GitHub Logo](./logo.png)
 
 ## Установка
 
