@@ -1,4 +1,6 @@
-var mockFs = require('mock-fs'),
+var os = require('os'),
+    fs = require('fs'),
+    mockFs = require('mock-fs'),
     should = require('should'),
     Config = require('bs-builder-core/lib/config'),
     Model = require('bs-builder-core/lib/model/model'),
@@ -120,6 +122,62 @@ describe('BuildSiteMapXML', function () {
                         priority: 1.0
                     }
                 ]);
+        });
+    });
+
+    describe('run', function () {
+        var model,
+            pages;
+
+        before(function () {
+            model = new Model();
+            model.setPages([
+                {
+                    url: '/url1',
+                    en: { published: true },
+                    ru: { published: true }
+                }
+            ]);
+
+            task = new BuildSiteMapXML(config, { hosts: {
+                en: 'https://my.site.com',
+                ru: 'https://my.site.ru'
+            } });
+        })
+
+        it('should successfully create and save sitemap.xml file to filesystem', function (done) {
+            task.run(model).then(function () {
+                fs.existsSync('./data/sitemap.xml').should.equal(true);
+                var sitemap = fs.readFileSync('./data/sitemap.xml', { encoding: 'utf-8' }),
+                    expected = [
+                        '<?xml version="1.0" encoding="UTF-8"?>',
+                        '<urlset>',
+                        '<url>',
+                        '<loc>https://my.site.com/url1</loc>',
+                        '<changefreq>weekly</changefreq>',
+                        '<priority>0.5</priority>',
+                        '</url>',
+                        '<url>',
+                        '<loc>https://my.site.ru/url1</loc>',
+                        '<changefreq>weekly</changefreq>',
+                        '<priority>0.5</priority>',
+                        '</url>',
+                        '</urlset>'
+                    ].join('\n');
+
+                sitemap = sitemap.replace(/\t/g, '');
+                sitemap.should.equal(expected);
+                done();
+            });
+        });
+
+        it('should rejected with error if data directory does not exists', function (done) {
+            fs.rmdirSync('./data');
+            task.run(model).catch(function (error) {
+                fs.existsSync('./data/sitemap.xml').should.equal(false);
+                error.code.should.equal('ENOENT');
+                done();
+            });
         });
     });
 });
