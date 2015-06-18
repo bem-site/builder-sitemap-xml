@@ -1,6 +1,6 @@
 {
   "name": "bs-builder-sitemap-xml",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Plugin for bs-builder system which creates sitemap.xml file",
   "repository": {
     "type": "git",
